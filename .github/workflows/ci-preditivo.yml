@@ -3,10 +3,10 @@ name: Predictive Test Pipeline
 on:
   push:
     branches:
-      - main  # Ou 'master' se for o caso
+      - master  # Ou 'master' se for o caso
   #pull_request:
    # branches:
-    #  - main
+    #  - master
 
 jobs:
   predictive_tests:
