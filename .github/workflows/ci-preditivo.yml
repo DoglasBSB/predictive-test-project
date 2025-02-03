@@ -27,10 +27,10 @@ jobs:
           pip install -r requirements.txt
 
       - name: 🛠️ Treinar modelo preditivo (se necessário)
-        run: python ml_model/train_lstm.py
+        run: python3 ../ml_model/train_lstm.py
 
       - name: 🔮 Executar previsão de falhas nos testes
-        run: python ml_model/predict_test_failure.py
+        run: python3 ../ml_model/predict_test_failure.py
 
       - name: 🚀 Rodar testes no Cypress
         run: npx cypress run
