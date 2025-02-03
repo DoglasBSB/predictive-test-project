@@ -3,10 +3,7 @@ name: Predictive Test Pipeline
 on:
   push:
     branches:
-      - master  # Ou 'master' se for o caso
-  #pull_request:
-   # branches:
-    #  - master
+      - master  # Ou 'main' se for o caso
 
 jobs:
   predictive_tests:
@@ -14,7 +11,7 @@ jobs:
 
     steps:
       - name: 📥 Checkout do código
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: 📦 Configurar ambiente Python
         uses: actions/setup-python@v4
@@ -25,12 +22,28 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
+      
+      - name: 📄 Criar dataset de teste (se necessário)
+        run: |
+          if [ ! -f "ml_model/test_data.csv" ]; then
+            echo "Gerando test_data.csv..."
+            echo "feature1,feature2,label" > ml_model/test_data.csv
+            echo "0.1,0.2,1" >> ml_model/test_data.csv
+            echo "0.3,0.4,0" >> ml_model/test_data.csv
+          fi
 
       - name: 🛠️ Treinar modelo preditivo (se necessário)
-        run: python3 ../ml_model/train_lstm.py
+        run: |
+          if [ ! -f "ml_model/test_failure_predictor.h5" ]; then
+            python3 ml_model/train_lstm.py
+          fi
+
+
+      - name: 🛠️ Treinar modelo preditivo (se necessário)
+        run: python3 ml_model/train_lstm.py  # Caminho corrigido
 
       - name: 🔮 Executar previsão de falhas nos testes
-        run: python3 ../ml_model/predict_test_failure.py
+        run: python3 ml_model/predict_test_failure.py  # Caminho corrigido
 
       - name: 🚀 Rodar testes no Cypress
         run: npx cypress run
