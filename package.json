@@ -1,0 +1,20 @@
+{
+  "name": "projeto-teste-preditivo",
+  "version": "1.0.0",
+  "description": "Projeto para previsão de falhas em testes",
+  "main": "scripts/run_tests.js",
+  "scripts": {
+   "test": "node scripts/run_tests.js"
+  },
+  "dependencies": {
+    "tensorflow": "^2.0.0",
+    "requests": "^2.0.0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@walmyr-filho/cy-press": "^1.0.2",
+    "cypress": "^14.0.1"
+  }
+}

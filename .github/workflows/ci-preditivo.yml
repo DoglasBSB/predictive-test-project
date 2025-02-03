@@ -1,0 +1,36 @@
+name: CI - Testes Preditivos Checkout
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout do código
+        uses: actions/checkout@v3
+
+      - name: 🐍 Configurar Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.9"
+
+      - name: 📦 Instalar dependências Python
+        run: pip install -r requirements.txt
+
+      - name: 🖥️ Rodar previsão de falhas no checkout
+        run: python3 scripts/ml_model/predict_test_failure.py
+
+      - name: 🌍 Configurar Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+
+      - name: 📦 Instalar dependências do Cypress
+        run: npm install
+
+      - name: 🧪 Executar testes E2E no Cypress
+        run: npx cypress run

@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pdb
+*.sqlite3
+*.log
+*.csv
+
+# Diretórios de ambiente virtual (se você estiver usando um ambiente virtual para Python)
+venv/
+env/
+*.egg-info/
+
+# Arquivos de modelo treinado (para não versionar os modelos)
+*.pkl
+model/
+
+# Dependências do Node.js
+node_modules/
+
+# Arquivos de log do Cypress (caso estejam sendo gerados durante a execução dos testes)
+cypress/videos/
+cypress/screenshots/
+
+# Arquivos de configuração do IDE/Editor
+.vscode/
+.idea/
+
+# Arquivos de configuração do sistema operacional
+.DS_Store
+Thumbs.db
+
+# Arquivos temporários de sistema
+*.swp
+*.swo
+*.bak
+*.tmp
