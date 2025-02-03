@@ -38,13 +38,6 @@ jobs:
             python3 ml_model/train_lstm.py
           fi
 
-
-      - name: 🛠️ Treinar modelo preditivo (se necessário)
-        run: python3 ml_model/train_lstm.py  # Caminho corrigido
-
-      - name: 🔮 Executar previsão de falhas nos testes
-        run: python3 ml_model/predict_test_failure.py  # Caminho corrigido
-
       - name: 🚀 Rodar testes no Cypress
         run: npx cypress run
 
