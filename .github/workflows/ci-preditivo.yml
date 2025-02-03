@@ -39,7 +39,7 @@ jobs:
         run: npx cypress run --record --key ${{ secrets.CYPRESS_RECORD_KEY }} 
 
       - name: 📊 Salvar artefatos (logs e relatórios)
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: predictive-test-results
           path: cypress/reports/
