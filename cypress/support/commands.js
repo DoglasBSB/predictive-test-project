@@ -97,8 +97,6 @@ cy.get(':nth-child(2) > :nth-child(2) > .theme-btn-one').click()
 //assert
 cy.contains('h2', 'Order success!').should('be.visible')
 cy.get('.offer_modal_left > h3').should('have.text', 'Congrats! Your order was created with sucess!')
-
-
 })
 
 Cypress.Commands.add('finalizarCompra', () => {
@@ -109,5 +107,4 @@ cy.get(':nth-child(2) > :nth-child(2) > .theme-btn-one').click()
 //assert
 cy.contains('h2', 'Order success!').should('be.visible')
 cy.get('.offer_modal_left > h3').should('have.text', 'Congrats! Your order was created with sucess!')
-
 })
