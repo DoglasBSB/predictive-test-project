@@ -6,7 +6,7 @@ __pycache__/
 *.pdb
 *.sqlite3
 *.log
-*.csv
+
 
 # Diretórios de ambiente virtual (se você estiver usando um ambiente virtual para Python)
 venv/
