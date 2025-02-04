@@ -1,4 +1,4 @@
-const { Enter } = require('wd/lib/special-keys')
+import { Enter } from 'wd/lib/special-keys'
 
 Cypress.on('uncaught:exception', (err, runnable) => {
   // returning false here prevents Cypress from
