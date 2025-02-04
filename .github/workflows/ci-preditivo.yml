@@ -38,11 +38,9 @@ jobs:
             python3 ml_model/train_lstm.py
           fi
 
-      - name: 🧹 Limpar cache do npm
-        run: npm cache clean --force
+
           
-      - name: 📦 Instalar dependências
-        run: npm install      
+    
 
       - name: 🚀 Rodar testes no Cypress com Dashboard
         run: npx cypress run --record --key ${{ secrets.CYPRESS_RECORD_KEY }} 
