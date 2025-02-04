@@ -1,4 +1,4 @@
-import { Enter } from 'wd/lib/special-keys'
+//const { Enter } = require('wd/lib/special-keys')
 
 Cypress.on('uncaught:exception', (err, runnable) => {
   // returning false here prevents Cypress from
@@ -35,7 +35,7 @@ Cypress.Commands.add('buscarProduto', () => {
   cy.intercept('GET', '**/my-account#search').as('getSearch')
   cy.visit('/my-account#search')
   cy.get(':nth-child(3) > .search_width > img').click()
-  cy.get('form > input').type('mobile').press('enter')
+  cy.get('form > input').type('mobile').type('{enter}')
   cy.get('.swal2-confirm').click()
   //cy.wait('@getSearch')
 })
