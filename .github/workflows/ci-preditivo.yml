@@ -37,6 +37,13 @@ jobs:
           if [ ! -f "ml_model/test_failure_predictor.h5" ]; then
             python3 ml_model/train_lstm.py
           fi
+          
+      - name: 📦 Instalar dependências
+        run: npm install
+        
+      #- name: 🚀 Rodar testes no Cypress
+      #  run: npx cypress run
+        
 
       - name: 🚀 Rodar testes no Cypress com Dashboard
         run: npx cypress run --record --key ${{ secrets.CYPRESS_RECORD_KEY }} 
