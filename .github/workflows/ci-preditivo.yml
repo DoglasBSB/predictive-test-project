@@ -37,6 +37,9 @@ jobs:
           if [ ! -f "ml_model/test_failure_predictor.h5" ]; then
             python3 ml_model/train_lstm.py
           fi
+
+      - name: 🧹 Limpar cache do npm
+        run: npm cache clean --force
           
       - name: 📦 Instalar dependências
         run: npm install
