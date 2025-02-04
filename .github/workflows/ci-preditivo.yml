@@ -42,11 +42,7 @@ jobs:
         run: npm cache clean --force
           
       - name: 📦 Instalar dependências
-        run: npm install
-        
-      #- name: 🚀 Rodar testes no Cypress
-      #  run: npx cypress run
-        
+        run: yarn install      
 
       - name: 🚀 Rodar testes no Cypress com Dashboard
         run: npx cypress run --record --key ${{ secrets.CYPRESS_RECORD_KEY }} 
