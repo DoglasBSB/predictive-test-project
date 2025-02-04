@@ -4,12 +4,13 @@
   "description": "Projeto para previsão de falhas em testes",
   "main": "scripts/run_tests.js",
   "scripts": {
-   "test": "node scripts/run_tests.js"
+    "test": "node scripts/run_tests.js"
   },
   "dependencies": {
-    "tensorflow": "^2.0.0",
-     "axios": "^0.26.1",
-     "node-fetch": "^2.6.7"
+    "@tensorflow/tfjs": "^4.22.0",
+    "@tensorflow/tfjs-node": "^4.22.0",
+    "axios": "^0.26.1",
+    "node-fetch": "^2.6.7"
   },
   "keywords": [],
   "author": "",
