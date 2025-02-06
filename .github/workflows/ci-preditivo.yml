@@ -25,18 +25,20 @@ jobs:
       
       - name: 📄 Criar dataset de teste (se necessário)
         run: |
-          if [ ! -f "ml_model/test_data.csv" ]; then
-            echo "Gerando test_data.csv..."
-            echo "feature1,feature2,label" > ml_model/test_data.csv
-            echo "0.1,0.2,1" >> ml_model/test_data.csv
-            echo "0.3,0.4,0" >> ml_model/test_data.csv
+          if [ ! -f "ml_model/test_data.csv" ] || [ $(find "ml_model/test_data_raw.csv" -mmin -10) ]; then
+            echo "🔄 Atualizando dados de teste..."
+            python3 ml_model/prepare_data.py
+          else
+            echo "✅ Dados de teste já estão atualizados."
           fi
-
+ 
       - name: 🛠️ Treinar modelo preditivo (se necessário)
         run: |
-          if [ ! -f "ml_model/test_failure_predictor.h5" ]; then
-            python3 ml_model/train_lstm.py
-          fi
+            if [ ! -f "ml_model/test_failure_predictor.h5" ]; then
+              python3 ml_model/train_lstm.py
+            else
+              echo "✅ Modelo já treinado. Pulando esta etapa."
+            fi
       
       - name: 🛠️ Instalar dependências
         run: npm install

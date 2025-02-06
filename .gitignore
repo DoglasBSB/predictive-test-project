@@ -37,3 +37,6 @@ Thumbs.db
 *.swo
 *.bak
 *.tmp
+
+# Arquivo de variáveis de ambiente
+.env

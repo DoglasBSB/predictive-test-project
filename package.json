@@ -4,7 +4,9 @@
   "description": "Projeto para previsão de falhas em testes",
   "main": "scripts/run_tests.js",
   "scripts": {
-    "test": "node scripts/run_tests.js"
+    "test": "node scripts/run_tests.js",
+    "cy:run": "cypress run --headless",
+    "cy:open": "cypress open"
   },
   "dependencies": {
     "@tensorflow/tfjs": "^4.22.0",
@@ -17,6 +19,10 @@
   "license": "MIT",
   "devDependencies": {
     "@walmyr-filho/cy-press": "^1.0.2",
-    "cypress": "^14.0.1"
+    "cypress": "^14.0.1",
+    "cypress-mochawesome-reporter": "^3.8.2",
+    "cypress-multi-reporters": "^2.0.5",
+    "cypress-qase-reporter": "^2.2.8",
+    "mocha": "^11.1.0"
   }
 }
