@@ -23,6 +23,7 @@ node_modules/
 # Arquivos de log do Cypress (caso estejam sendo gerados durante a execução dos testes)
 cypress/videos/
 cypress/screenshots/
+cypress/reports
 
 # Arquivos de configuração do IDE/Editor
 .vscode/
@@ -40,3 +41,4 @@ Thumbs.db
 
 # Arquivo de variáveis de ambiente
 .env
+cypress/reports/html/.jsons/

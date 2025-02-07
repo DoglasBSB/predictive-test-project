@@ -28,7 +28,7 @@ def get_qase_data():
         # 📌 Verifica se a resposta contém dados válidos
         test_cases = result.get("result", {}).get("entities", [])
         if not test_cases:
-            print("⚠️ Nenhum dado válido retornado da API do Qase.")
+            print("❗Nenhum dado válido retornado da API do Qase.")
             return []
 
         cases = []
@@ -51,7 +51,7 @@ def prepare_data():
     """
     raw_data = get_qase_data()
     if not raw_data:
-        print("⚠️ Nenhum dado processado. Abortando...")
+        print("❗Nenhum dado processado. Abortando...")
         return None
 
     df = pd.DataFrame(raw_data, columns=['error_count', 'response_time', 'test_status'])

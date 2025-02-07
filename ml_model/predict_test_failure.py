@@ -11,7 +11,7 @@ TEST_DATA_PATH = "test_data.csv"  # Atualizado para corresponder ao arquivo gera
 
 # Verifica se o arquivo de dados existe antes de tentar carregar
 if not os.path.exists(TEST_DATA_PATH):
-    print("⚠️ Arquivo test_data.csv não encontrado! Usando valores padrão.")
+    print("❗ Arquivo test_data.csv não encontrado! Usando valores padrão.")
     new_test_data = np.array([[0, 0, 0]])  # Valores padrão para evitar erro
 else:
     
@@ -25,7 +25,7 @@ new_test_data = df[feature_columns].iloc[-1:].values
 
 # Carregar o scaler salvo durante o treinamento
 if not os.path.exists(SCALER_PATH):
-    print("⚠️ Arquivo scaler.pkl não encontrado! Normalização pode estar incorreta.")
+    print("❗ Arquivo scaler.pkl não encontrado! Normalização pode estar incorreta.")
     scaler = None
 else:
     scaler = joblib.load(SCALER_PATH)

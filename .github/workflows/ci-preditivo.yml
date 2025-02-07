@@ -46,9 +46,9 @@ jobs:
       - name: 🏗️ Instalar Cypress
         run: npx cypress install
           
-      - name: 🚀 Rodar testes no Cypress com Dashboard (Sempre Reporta)
+      - name: 🚀 Executar testes com Cypress e Qase
         run: |
-          echo "🔄 Iniciando testes E2E no Cypress..."
+          echo "🔄 Iniciando testes..."
           if npx cypress run --record --key ${{ secrets.CYPRESS_RECORD_KEY }}; then
             echo "✅ Testes Cypress passaram!"
             TEST_STATUS=0
@@ -56,12 +56,12 @@ jobs:
             echo "❌ Testes Cypress falharam!"
             TEST_STATUS=1
           fi
-          echo "🔄 Reportando resultados ao Qase..."
-          QASE_MODE=testops npx cypress run || echo "⚠️ Falha ao reportar ao Qase, mas prosseguindo..."
+          echo "🔄 Reportando ao Qase..."
+          QASE_MODE=testops QASE_TESTOPS_API_TOKEN=${{ secrets.QASE_API_TOKEN }} npx cypress run || echo "❌ Falha ao reportar ao Qase"
           exit $TEST_STATUS
         env:
           QASE_REPORT: 1
-          QASE_API_TOKEN: ${{ secrets.QASE_API_TOKEN }}
+          QASE_TESTOPS_API_TOKEN: ${{ secrets.QASE_API_TOKEN }}
           QASE_PROJECT_CODE: "CPQ"
 
       - name: 📊 Salvar artefatos (logs e relatórios)

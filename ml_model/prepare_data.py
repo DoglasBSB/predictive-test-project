@@ -60,7 +60,7 @@ def process_data(raw_data):
 
     # Se nenhum dado foi processado, aborta
     if not processed_data:
-        print("⚠️ Nenhum dado processado. Abortando...")
+        print("❗ Nenhum dado processado. Abortando...")
         return None
 
     # Convertendo para um DataFrame
@@ -77,13 +77,13 @@ def prepare_data():
     raw_data = get_qase_data()
 
     if not raw_data:
-        print("⚠️ Nenhum dado processado. Abortando...")
+        print("❗ Nenhum dado processado. Abortando...")
         return None
 
     df = process_data(raw_data)
 
     if df is None or len(df) < 2:  # Verifica se há dados suficientes
-        print("⚠️ Dados insuficientes para treinar o modelo! Precisamos de pelo menos 2 amostras.")
+        print("❗ Dados insuficientes para treinar o modelo! Precisamos de pelo menos 2 amostras.")
         return None
 
     # Separar features (X) e target (y)
