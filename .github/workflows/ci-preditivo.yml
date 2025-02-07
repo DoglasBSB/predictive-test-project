@@ -46,23 +46,31 @@ jobs:
       - name: 🏗️ Instalar Cypress
         run: npx cypress install
           
-      - name: 🚀 Executar testes com Cypress e Qase
+        - name: 🚀 Executar testes com Cypress e reportar ao Qase
         run: |
-          echo "🔄 Iniciando testes..."
-          if npx cypress run --record --key ${{ secrets.CYPRESS_RECORD_KEY }}; then
-            echo "✅ Testes Cypress passaram!"
-            TEST_STATUS=0
+          echo "🔄 Iniciando testes com Cypress..."
+          
+          # Executa os testes e captura o status (0 = sucesso, 1 = falha)
+          QASE_MODE=testops QASE_TESTOPS_API_TOKEN=${{ secrets.QASE_API_TOKEN }} \
+          npx cypress run --record --key ${{ secrets.CYPRESS_RECORD_KEY }}
+          
+          TEST_STATUS=$?  # Captura o status de execução (sucesso ou falha)
+      
+          echo "🔄 Reportando resultado ao Qase..."
+          
+          # Sempre reporta ao Qase, independentemente do resultado
+          if [ "$TEST_STATUS" -eq 0 ]; then
+            echo "✅ Testes passaram! Reportando ao Qase..."
           else
-            echo "❌ Testes Cypress falharam!"
-            TEST_STATUS=1
+            echo "❌ Testes falharam! Reportando ao Qase..."
           fi
-          echo "🔄 Reportando ao Qase..."
-          QASE_MODE=testops QASE_TESTOPS_API_TOKEN=${{ secrets.QASE_API_TOKEN }} npx cypress run || echo "❌ Falha ao reportar ao Qase"
-          exit $TEST_STATUS
+      
+          exit $TEST_STATUS  # Finaliza o job com o status correto
         env:
           QASE_REPORT: 1
           QASE_TESTOPS_API_TOKEN: ${{ secrets.QASE_API_TOKEN }}
           QASE_PROJECT_CODE: "CPQ"
+      
 
       - name: 📊 Salvar artefatos (logs e relatórios)
         uses: actions/upload-artifact@v4
