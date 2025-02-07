@@ -46,7 +46,7 @@ jobs:
       - name: 🏗️ Instalar Cypress
         run: npx cypress install
           
-        - name: 🚀 Executar testes com Cypress e reportar ao Qase
+      - name: 🚀 Executar testes com Cypress e reportar ao Qase
         run: |
           echo "🔄 Iniciando testes com Cypress..."
           
