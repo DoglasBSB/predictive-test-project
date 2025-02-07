@@ -7,7 +7,7 @@ on:
 
 jobs:
   predictive_tests:
-    runs-on: ubuntu-latest  # Define o sistema operacional do runner
+    runs-on: ubuntu-latest
 
     steps:
       - name: 📥 Checkout do código
@@ -34,11 +34,11 @@ jobs:
  
       - name: 🛠️ Treinar modelo preditivo (se necessário)
         run: |
-            if [ ! -f "ml_model/test_failure_predictor.h5" ]; then
-              python3 ml_model/train_lstm.py
-            else
-              echo "✅ Modelo já treinado. Pulando esta etapa."
-            fi
+          if [ ! -f "ml_model/test_failure_predictor.h5" ]; then
+            python3 ml_model/train_lstm.py
+          else
+            echo "✅ Modelo já treinado. Pulando esta etapa."
+          fi
       
       - name: 🛠️ Instalar dependências
         run: npm install
@@ -46,22 +46,23 @@ jobs:
       - name: 🏗️ Instalar Cypress
         run: npx cypress install
           
-      - name: 🚀 Rodar testes no Cypress com Dashboard
-        run: npx cypress run --record --key ${{ secrets.CYPRESS_RECORD_KEY }} 
-      
-      - name: Executar testes E2E com Cypress e Qase
-        run: QASE_MODE=testops npx cypress run
+      - name: 🚀 Rodar testes no Cypress com Dashboard (Sempre Reporta)
+        run: |
+          echo "🔄 Iniciando testes E2E no Cypress..."
+          if npx cypress run --record --key ${{ secrets.CYPRESS_RECORD_KEY }}; then
+            echo "✅ Testes Cypress passaram!"
+            TEST_STATUS=0
+          else
+            echo "❌ Testes Cypress falharam!"
+            TEST_STATUS=1
+          fi
+          echo "🔄 Reportando resultados ao Qase..."
+          QASE_MODE=testops npx cypress run || echo "⚠️ Falha ao reportar ao Qase, mas prosseguindo..."
+          exit $TEST_STATUS
         env:
           QASE_REPORT: 1
           QASE_API_TOKEN: ${{ secrets.QASE_API_TOKEN }}
-          QASE_PROJECT_CODE: "CPQ" 
-      
-      #- name: Executar testes via script
-       # run: QASE_MODE=testops node scripts/run_tests.js
-        #env:
-         #   QASE_REPORT: 1
-         #  QASE_API_TOKEN: #$#{{ secrets.QASE_API_TOKEN }}
-         #   QASE_PROJECT_CODE: "SEU_CODIGO_DO_PROJETO"
+          QASE_PROJECT_CODE: "CPQ"
 
       - name: 📊 Salvar artefatos (logs e relatórios)
         uses: actions/upload-artifact@v4
