@@ -52,7 +52,7 @@ Cypress.Commands.add('adicionarProduto', () => {
  //Adicionar no carrinho
  cy.intercept('GET', '**/product-details-one/1').as('getProduct')
  cy.visit('/product-details-one/1')
- cy.get('.links_Product_areas > .theme-btn-one').click()
+ cy.get('.inks_Product_areas > .theme-btn-one').click()
  cy.wait(3000)
  cy.get('.modal_product_content_one > h3').should('have.text', 'Green Dress For Woman')
  cy.wait('@getProduct')

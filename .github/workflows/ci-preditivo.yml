@@ -48,6 +48,20 @@ jobs:
           
       - name: 🚀 Rodar testes no Cypress com Dashboard
         run: npx cypress run --record --key ${{ secrets.CYPRESS_RECORD_KEY }} 
+      
+      - name: Executar testes E2E com Cypress e Qase
+        run: QASE_MODE=testops npx cypress run
+        env:
+          QASE_REPORT: 1
+          QASE_API_TOKEN: ${{ secrets.QASE_API_TOKEN }}
+          QASE_PROJECT_CODE: "CPQ" 
+      
+      #- name: Executar testes via script
+       # run: QASE_MODE=testops node scripts/run_tests.js
+        #env:
+         #   QASE_REPORT: 1
+         #  QASE_API_TOKEN: #$#{{ secrets.QASE_API_TOKEN }}
+         #   QASE_PROJECT_CODE: "SEU_CODIGO_DO_PROJETO"
 
       - name: 📊 Salvar artefatos (logs e relatórios)
         uses: actions/upload-artifact@v4
