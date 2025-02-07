@@ -17,7 +17,7 @@ module.exports = defineConfig({
 
       testops: {
         api: {
-          token: process.env.QASE_API_KEY, // Agora usa a variável de ambiente
+          token: process.env.API_KEY, // Agora usa a variável de ambiente
         },
 
         project: 'CPQ',
