@@ -1,0 +1,111 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2025-02-07T10:34:58.048Z",
+    "end": "2025-02-07T10:35:15.248Z",
+    "duration": 17200,
+    "testsRegistered": 1,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "94ad08d7-e5b9-4ebf-8382-db76a18f1d71",
+      "title": "",
+      "fullFile": "cypress/e2e/checkout.cy.js",
+      "file": "cypress/e2e/checkout.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "b9633f03-ee10-4ad4-ad33-ad91881ffcbb",
+          "title": "Fluxo de Checkout",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Deve concluir a compra com sucesso (Qase ID: 1)",
+              "fullTitle": "Fluxo de Checkout Deve concluir a compra com sucesso (Qase ID: 1)",
+              "timedOut": null,
+              "duration": 17180,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.guiLogin();\ncy.buscarProduto();\ncy.selecionarProduto();\ncy.adicionarProduto();\ncy.checkout();",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `.inks_Product_areas > .theme-btn-one`, but never found it.",
+                "estack": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `.inks_Product_areas > .theme-btn-one`, but never found it.\n    at Context.eval (webpack://projeto-teste-preditivo/./cypress/support/commands.js:55:4)\n    at wrapped (https://automationpratice.com.br/__cypress/runner/cypress_runner.js:137815:43)",
+                "diff": null
+              },
+              "uuid": "95c3282e-ed2a-4744-81f0-8ee357ee29d5",
+              "parentUUID": "b9633f03-ee10-4ad4-ad33-ad91881ffcbb",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "95c3282e-ed2a-4744-81f0-8ee357ee29d5"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 17180,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "charts": true,
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "reportDir": "cypress/reports/html/.jsons"
+      },
+      "version": "6.2.0"
+    }
+  }
+}

@@ -28,3 +28,6 @@
 [2025-02-05T17:43:23.157Z] [DEBUG] qase: Results sent to Qase: 1
 [2025-02-05T17:43:23.759Z] [INFO] qase: [32mRun 2 completed[39m
 [2025-02-05T17:43:23.760Z] [INFO] qase: [34mTest run link: https://app.qase.io/run/CPQ/dashboard/2[39m
+[2025-02-07T10:34:51.231Z] [DEBUG] qase: Config: {"debug":true,"testops":{"api":{},"project":"CPQ","uploadAttachments":true,"run":{"complete":true},"plan":{},"batch":{}},"framework":{"cypress":{"screenshotsFolder":"cypress/screenshots"}},"frameworkPackage":"cypress","frameworkName":"cypress","reporterName":"cypress-qase-reporter","report":{"connections":{"local":{}}}}
+[2025-02-07T10:34:58.041Z] [DEBUG] qase: Config: {"id":"default","debug":true,"testops":{"api":{},"project":"CPQ","uploadAttachments":true,"run":{"complete":true},"plan":{},"batch":{}},"frameworkPackage":"cypress","frameworkName":"cypress","reporterName":"cypress-qase-reporter","report":{"connections":{"local":{}}}}
+[2025-02-07T10:35:15.497Z] [DEBUG] qase: Config: {"id":"default","debug":true,"testops":{"api":{},"project":"CPQ","uploadAttachments":true,"run":{"complete":true},"plan":{},"batch":{}},"report":{"connections":{"local":{}}}}

@@ -6,7 +6,6 @@ describe('Fluxo de Checkout', () => {
     //cy.sessionLogin()    
   })
 
-
   qase(1, it('Deve concluir a compra com sucesso', () => {
     cy.guiLogin()
     cy.buscarProduto()
