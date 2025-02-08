@@ -8,7 +8,7 @@ try {
 
     console.log(`📊 Resultado da previsão:\n${predictionOutput}`);
 
-    if (predictionOutput.includes("Alta chance de falha!")) {
+    if (predictionOutput.includes("🔥 Alta chance de falha!")) {
         console.log("🚀 Rodando testes Cypress...");
         execSync('npx cypress run --spec cypress/e2e/checkout.cy.js', { stdio: 'inherit', cwd: path.resolve(__dirname, '..') });
     } else {
