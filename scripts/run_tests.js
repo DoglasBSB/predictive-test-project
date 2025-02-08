@@ -1,10 +1,14 @@
 const { execSync } = require('child_process');
 const path = require('path');
 
+
 try {
     console.log("🔍 Executando previsão de falha...");
     const pythonCmd = process.platform === "win32" ? "python" : "python3";
-    const predictionOutput = execSync(`${pythonCmd} ../ml_model/predict_test_failure.py`, { encoding: 'utf-8' });
+    //const predictionOutput = execSync(`${pythonCmd} ../ml_model/predict_test_failure.py`, { encoding: 'utf-8' });
+    const predictionOutput = execSync(`${pythonCmd} ${path.join(__dirname, '../ml_model/predict_test_failure.py')}`, { encoding: 'utf-8' });
+
+    
 
     console.log(`📊 Resultado da previsão:\n${predictionOutput}`);
 
