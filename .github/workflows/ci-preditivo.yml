@@ -70,9 +70,3 @@ jobs:
           QASE_REPORT: 1
           QASE_TESTOPS_API_TOKEN: ${{ secrets.QASE_API_TOKEN }}
           QASE_PROJECT_CODE: "CPQ"
-
-      - name: 📊 Salvar artefatos (logs e relatórios)
-        uses: actions/upload-artifact@v4
-        with:
-          name: predictive-test-results
-          path: cypress/reports/

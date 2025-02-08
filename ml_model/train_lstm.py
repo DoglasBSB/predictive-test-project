@@ -69,7 +69,7 @@ def prepare_data():
     X_test = scaler.transform(X_test)
 
     # Salvar o scaler para reutilização
-    #os.makedirs("ml_model", exist_ok=True)
+    os.makedirs("ml_model", exist_ok=False)
     joblib.dump(scaler, "scaler.pkl")
 
     # Ajustar para o formato LSTM (samples, timesteps, features)
